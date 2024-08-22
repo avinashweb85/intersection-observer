@@ -33,7 +33,7 @@ function useInfinite() {
 
             observer.observe(images);
 
-            return () => observer.disconnect(images);
+            return () => observer.disconnect();
         }
     }, [photos])
 
