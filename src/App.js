@@ -1,23 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import useInfinite from './hooks/useInfinite';
 
 function App() {
+  const [getImage, photos] = useInfinite();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" ref={getImage}>
+      {
+        photos?.map((photo) => (
+          <img src={photo?.url} alt='photos' key={photo?.id} className='image-post' />
+        ))
+      }
     </div>
   );
 }
